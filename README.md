@@ -1,62 +1,104 @@
 # Linux System Information and Resource Monitoring Tool
 
-A C-based Linux terminal application developed to monitor important system resources and display useful system information in a simple and organized way.
+A C-based Linux terminal application for monitoring system resources and displaying important system information through a simple menu-driven interface.
 
-## About the Project
+## Overview
 
-This project provides a menu-driven interface for checking different aspects of a Linux system. Instead of using multiple commands separately, the application brings basic system monitoring features together in one program.
+The Linux System Information and Resource Monitoring Tool provides a centralized way to monitor essential Linux system resources such as CPU, memory, disk storage, processes, network activity, and system uptime.
 
-The project uses Linux system interfaces and the `/proc` filesystem to collect information about CPU, memory, processes, disk storage, and system uptime.
+The application is developed in C and uses Linux system interfaces, system calls, and the `/proc` filesystem to collect and process system information directly from the operating system.
+
+This project was developed to demonstrate practical Operating System concepts including process management, memory management, file system management, CPU utilization, system calls, and resource management.
 
 ## Features
 
-- System Information
-  - Operating system
-  - Kernel version
+- **System Information**
+  - Operating system and kernel information
   - System architecture
   - Hostname
   - CPU information
+  - CPU cores and frequency
   - Current user information
 
-- CPU Monitoring
+- **CPU Usage Monitoring**
   - CPU utilization percentage
-  - Live CPU usage monitoring
+  - Continuous CPU monitoring
+  - CPU statistics using `/proc/stat`
 
-- Memory Monitoring
+- **Memory Monitoring**
   - Total, used, and available RAM
   - Cached and buffer memory
   - Swap memory usage
-  - Memory usage status
+  - Memory utilization status
 
-- Disk Monitoring
+- **Disk Monitoring**
   - Total, used, and free disk space
-  - Disk usage percentage
-  - Inode information
+  - Disk utilization percentage
+  - Inode statistics
 
-- Process Monitoring
-  - List of running processes
-  - Process ID and parent process ID
-  - Process state
-  - Process tree
-  - Process statistics
+- **Process Monitoring**
+  - Running processes
+  - Process ID (PID)
+  - Parent Process ID (PPID)
+  - Process states
+  - Process hierarchy
 
-- System Uptime
-  - System running time
+- **System Uptime**
   - Days, hours, minutes, and seconds
-  - Total CPU time since boot
+  - Total system uptime
+  - Cumulative CPU time
+
+- **System Health Summary**
+  - CPU usage status
+  - Memory usage status
+  - Disk usage status
+  - Process activity overview
+
+- **Network Monitoring**
+  - Network interfaces
+  - Received data
+  - Transmitted data
+  - Network activity
+
+- **Top Resource-Consuming Processes**
+  - Top CPU-consuming processes
+  - Top memory-consuming processes
+  - Process resource statistics
+
+- **Process Search**
+  - Search processes by PID
+  - Search processes by name
+
+- **Resource Alerts**
+  - CPU usage threshold monitoring
+  - Memory usage threshold monitoring
+  - Disk usage threshold monitoring
+
+- **Resource Usage Logging**
+  - Timestamped resource information
+  - CPU, memory, disk, and process statistics
+  - Log storage in `monitor_log.txt`
 
 ## Technologies Used
 
 - C Programming
 - Linux / Ubuntu
 - GCC Compiler
-- Linux `/proc` Filesystem
-- Linux System Calls and APIs
+- Linux Terminal
+- Visual Studio Code
+- `/proc` Filesystem
+- Linux System Calls
+- POSIX APIs
 
-## How It Works
+## Linux Interfaces Used
 
-The application provides a main menu from which the user can select the required monitoring option.
+The project uses Linux system interfaces to obtain live system information:
 
-System information is collected using Linux system calls such as `uname()`, while resource information is read from files available through the `/proc` filesystem. Disk information is obtained using Linux filesystem APIs.
-
-The collected data is then processed and displayed in the terminal in a readable format.
+```text
+/proc/cpuinfo
+/proc/stat
+/proc/meminfo
+/proc/uptime
+/proc/net/dev
+/proc/[PID]/stat
+/proc/[PID]/statm
